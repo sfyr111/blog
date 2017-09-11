@@ -1,4 +1,28 @@
-# blog
+## 你应该学习的方向
 
-## 代码段
-[常用函数](https://zhuanlan.zhihu.com/p/27867969?utm_medium=social&utm_source=qq)
+## 前端基础
++ css
+    + [css3总结](https://github.com/sfyr111/blog/issues/1)
+    + [flex布局](https://github.com/sfyr111/blog/issues/2)
++ http
+    + [http缓存](https://github.com/sfyr111/blog/issues/3)
+    + 
++ webapi
+    + [EventLoop事件循环](https://github.com/sfyr111/blog/issues/4)
+
+## 算法
++ 数据结构
++ 算法
+
+## 语言熟练度
++ javascript
++ node
+
+## 框架熟练度
++ vue
+    + [vue生命周期](https://github.com/sfyr111/blog/issues/5)
++ express
++ webpack
+
+## 项目
++ vue + ssr + nuxt + express + mongo + redis
