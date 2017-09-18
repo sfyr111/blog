@@ -22,7 +22,7 @@
 ## 框架熟练度
 + vue
     + [vue生命周期](https://github.com/sfyr111/blog/issues/5)
-    + [vue.nextTick实现原理](https://github.com/sfyr111/blog/issues/7)
+	+ [vue.nextTick实现原理](https://github.com/sfyr111/blog/issues/7)
 + express
 + webpack
 
