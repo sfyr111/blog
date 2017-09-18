@@ -104,25 +104,131 @@ class BST {
     }
     removeNode(this.root, data)
   }
+
+  isBalanced () {
+    return (this.heightFromMin() >= this.heightFromMax() - 1) // 从两边计算，只要其中一边算都高度 >= 另一边 - 1 那么就扇均衡的
+  }
+
+  heightFromMin (node = this.root) { // 从最左边最小值开始计算高度
+    if (node === null) return -1 // 先确定到最末尾都节点
+    let left = this.heightFromMin(node.left)
+    let right = this.heightFromMin(node.right)
+    if (left < right) return left + 1 // 从left最小值开始计算高度
+    else return right + 1
+  }
+
+  heightFromMax (node = this.root) {
+    if (node === null) return -1
+    let left = this.heightFromMax(node.left)
+    let right = this.heightFromMax(node.right)
+    if (left < right) return right + 1 // 从right最大值开始计算高度
+    else return left + 1
+  }
+
+  inOrder () {
+    if (this.root === null) return null
+    else {
+      const result = []
+      const traverseInOrder = function (node) {
+        node.left && traverseInOrder(node.left)
+        result.push(node.data)
+        node.right && traverseInOrder(node.right)
+      }
+      traverseInOrder(this.root)
+      return result
+    }
+  }
+
+  preOrder () {
+    if (this.root === null) return null
+    else {
+      const result = []
+      const traversePreOrder = function (node) {
+        result.push(node.data)
+        node.left && traversePreOrder(node.left)
+        node.right && traversePreOrder(node.right)
+      }
+      traversePreOrder(this.root)
+      return result
+    }
+  }
+
+  postOrder () {
+    if (this.root === null) return null
+    else {
+      const result = []
+      const traversePostOrder = function (node) {
+        node.left && traversePostOrder(node.left)
+        node.right && traversePostOrder(node.right)
+        result.push(node.data)
+      }
+      traversePostOrder(this.root)
+      return result
+    }
+  }
+
+  levelOrder () {
+    let result = []
+    let queue = []
+    if (this.root === null) return null
+    else {
+      queue.push(this.root)
+      while (queue.length > 0) {
+        let node = queue.shift()
+        result.push(node.data)
+        if (node.left !== null) {
+          queue.push(node.left)
+        }
+        if (node.right !== null) {
+          queue.push(node.right)
+        }
+      }
+      return result
+    }
+  }
 }
 
 const bst = new BST()
 
+// bst.add(4)
+// bst.add(2)
+// bst.add(6)
+// bst.add(1)
+// bst.add(3)
+// bst.add(5)
+// bst.add(7)
+// bst.remove(4)
+// console.log(bst)
+// console.log('----')
+// console.log(bst.findMin())
+// console.log(bst.findMax())
+// bst.remove(7)
+// console.log(bst.findMax())
+// console.log(bst.isPresent(4))
+// console.log(bst.isPresent(5))
+// console.log(bst.find(7))
+// console.log('----')
+
+// part 2
+bst.add(9)
 bst.add(4)
-bst.add(2)
-bst.add(6)
-bst.add(1)
+bst.add(17)
 bst.add(3)
+bst.add(6)
+bst.add(22)
 bst.add(5)
 bst.add(7)
-bst.remove(4)
-console.log(bst)
-console.log('----')
-console.log(bst.findMin())
-console.log(bst.findMax())
-bst.remove(7)
-console.log(bst.findMax())
-console.log(bst.isPresent(4))
-console.log(bst.isPresent(5))
-console.log(bst.find(7))
-console.log('----')
+bst.add(20)
+
+console.log(bst.heightFromMin())
+console.log(bst.heightFromMax())
+console.log(bst.isBalanced())
+bst.add(10)
+console.log(bst.heightFromMin())
+console.log(bst.heightFromMax())
+console.log(bst.isBalanced())
+console.log('inOrder: ' + bst.inOrder())
+console.log('preOrder: ' + bst.preOrder())
+console.log('postOrder: ' + bst.postOrder())
+
+console.log('levelOrder: ' + bst.levelOrder())
