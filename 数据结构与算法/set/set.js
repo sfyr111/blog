@@ -20,7 +20,7 @@ const MySet = function () {
   this.remove = function (element) {
     if (this.has(element)) {
       let index = collection.indexOf(element)
-      collection(index, 1)
+      collection.splice(index, 1)
       return true
     }
     return false

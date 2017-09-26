@@ -15,10 +15,10 @@ function PriorityQueue () {
         if (element[1] < collection[i][1]) {
           collection.splice(i, 0, element)
           added = true
-          break // 一旦插入跳出循环
+          break // 一旦满足插入条件跳出循环
         }
       }
-      if (!added) { // 优先级最小没有插入队列
+      if (!added) { // 优先级最小的情况插入队列
         collection.push(element)
       }
     }
